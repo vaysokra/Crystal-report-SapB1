@@ -4,6 +4,7 @@
 ##### Parameter field
 - range value ,there are two value : minimum() and maximum()
 - HasValue() , not HasValue() : for check null value (optional prompt in parameter field)
+- **Vendor@Select * from OCRD Where CardType='C'** for link to list all of vendor and **DocEntry@** for reference to docentry in any document 
 ##### change password
 ```
 DELETE FROM OUSR WHERE USERID = 1
