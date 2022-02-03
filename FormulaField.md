@@ -12,3 +12,8 @@ totext({Command.DocDate},'dd/MM/yyyy')
 ```go
 totext({Command.DocDate},'dd/MMM/yyyy')
 ```
+##### checkMark
+```go
+if {Command.DocCurr}='USD' then chr(254)
+else chr(111)
+```
