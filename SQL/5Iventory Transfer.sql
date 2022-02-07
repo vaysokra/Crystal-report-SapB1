@@ -6,7 +6,8 @@ b.WhsName OWHS_FromWhsName,
 bV2.WhsName OWHS_V2_ToWhsName,
 c.CardCode OCRD_CardCode,c.CardName,c.Address,c.Phone1,c.Phone2,
 d.firstName OHEM_firstName,d.middleName,d.lastName,d.mobile,d.homeTel,d.officeTel,
-f.UgpName
+f.UgpName,
+g.BeginStr NNM1_BeginStr,g.EndStr
 from 
 OWTR a left join WTR1 a1 on a.DocEntry=a1.DocEntry
 left join OWHS b on a1.FromWhsCod=b.WhsCode
@@ -15,3 +16,4 @@ left join OCRD c on a.cardcode=c.CardCode
 left join OHEM d on a.SlpCode=d.empID
 left join OITM e on a1.itemcode=e.itemcode
 left join OUGP f on e.UgpEntry=f.UgpEntry
+left join NNM1 g on a.Series = g.Series

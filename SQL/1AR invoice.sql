@@ -1,8 +1,8 @@
 select 
 a.DocEntry OINV_DocEntry,a.DocNum,a.DocDate,a.DocDueDate,a.CardCode,a.CardName,a.DocTotal,a.VatSum,a.DiscSum,a.NumAtCard,a.Address,a.Address2,
-a.DocDueDate,a.GroupNum,a.Comments,
+a.DocDueDate,a.GroupNum,a.Comments,a.NumAtCard,
 	a.U_ExchangeRate,
-a1.ItemCode INV1_ItemCode,a1.dscription,a1.PriceBefDi,a1.Price,a1.Quantity,a1.unitMsr,a1.unitMsr2,a1.LineTotal,a1.DiscPrcnt,a1.FreeTxt,
+a1.ItemCode INV1_ItemCode,a1.dscription,a1.PriceBefDi,a1.Price,a1.Quantity,a1.unitMsr,a1.unitMsr2,a1.LineTotal,a1.DiscPrcnt,a1.FreeTxt,a1.PriceAfVAT,
 	a1.U_ColorCode,
 b.CompnyName OADM_CompnyName,b.CompnyAddr,b.TaxIdNum,b.Phone1,
 c.CardName OCRD_CardName,c.LicTradNum,c.Phone1,c.Address,c.CardFName,c.Block,
