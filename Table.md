@@ -1,0 +1,2 @@
+- **OBOB** Business Object Brief
+- **OBOL** Business Object Link
