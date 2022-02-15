@@ -10,7 +10,7 @@ from ORDR
 #### return value from *SELECT*
 ```sql
 DECLARE @EmpName NVARCHAR(50)
-SELECT @EmpName =  DocNum FROM ORDR WHERE DocEntry = 3
+SELECT @EmpName =  DocNum FROM ORDR WHERE DocEntry = 3	-- or set @EmpName = (select  DocNum FROM ORDR WHERE DocEntry = 3)
 begin
 	select DocEntry from ORDR where DocNum = @EmpName
 end
