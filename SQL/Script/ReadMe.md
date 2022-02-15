@@ -17,9 +17,23 @@ end
 ```
 #### dynamic *TABLE*
 ```sql
-DECLARE @EmpName NVARCHAR(50)
-DECLARE @EmpName2 NVARCHAR(50)
-set @EmpName = (select  a.TableName FROM OBOB a WHERE a.TableName='ordr')
-set @EmpName2 = N' select * from '+@EmpName
-exec sp_executesql @empName2 
+DECLARE @TableName NVARCHAR(50)
+DECLARE @SQL NVARCHAR(Max)
+
+set @TableName = (select  a.TableName FROM OBOB a WHERE a.TableName='oqut')
+if (@TableName = 'ordr')
+begin
+	set @tableName = 'ordr';
+end
+else 
+begin
+	set @tableName = 'oqut';
+end
+set @SQL = ' 
+select  
+a.DocEntry,a.DocNum,a.DocDate,
+b.ItemCode,b.Dscription
+from '+@TableName+' a 
+left join '+right(@TableName,3)+'1 b'+' on a.docentry=b.docentry';
+exec sp_executesql @sql
 ```
