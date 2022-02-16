@@ -20,7 +20,7 @@ bbb.Name OUDP_Name,bbb.Remarks,
 c.TableName OBOB_TableName,
 d.AcctName OACT_AcctName,
 e.CardName OCRD_CardName,
-f.DocNum '+@table+'_DocNum'+',f.DocDate
+f.DocNum X_DocNum'+',f.DocDate
 from 
 OJDT a left join JDT1 a1 on a.TransId = a1.TransId
 left join OHEM b on a1.UserSign = b.USERID
