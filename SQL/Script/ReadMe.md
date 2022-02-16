@@ -1,5 +1,5 @@
 #### condition
-```sql
+```tsql
 select 
 case DocNum
   when '2021000001' then 'good'
@@ -8,7 +8,7 @@ case DocNum
 from ORDR
 ```
 #### return value from *SELECT*
-```sql
+```tsql
 DECLARE @EmpName NVARCHAR(50)
 SELECT @EmpName =  DocNum FROM ORDR WHERE DocEntry = 3	-- or set @EmpName = (select  DocNum FROM ORDR WHERE DocEntry = 3)
 begin
@@ -16,7 +16,7 @@ begin
 end
 ```
 #### dynamic *TABLE*
-```sql
+```tsql
 DECLARE @TableName NVARCHAR(50)
 DECLARE @SQL NVARCHAR(Max)
 
