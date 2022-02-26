@@ -9,6 +9,15 @@ x:=Totext ({Command.ORDR_DocNum},0,"");
 if {Command.DocCurr}='USD' then chr(254)
 else chr(111)
 ```
+#### Date Interval
+> 4/1/2015 to 4/1/2014
+```go
+DateAdd("yyyy", -1, {Command.RefDate})
+```
+> subtract 30 days from 4/1/2015
+```go
+DateAdd("d", -30, Date(2015, 04, 01))
+```
 ##### DocDate(01/05/2021)
 ```go
 totext({Command.DocDate},'dd/MM/yyyy')
