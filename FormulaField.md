@@ -1,3 +1,7 @@
+##### Image path on (OLE Object)
+```go
+IF ISNULL({OITM.PicturName}) THEN '' ELSE {@PicturePath} + {OITM.PicturName}
+```
 ##### DocNum
 ```go
 stringvar x;
