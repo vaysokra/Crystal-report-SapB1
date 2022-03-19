@@ -15,7 +15,7 @@ begin
 	select DocEntry from ORDR where DocNum = @EmpName
 end
 ```
-#### dynamic *TABLE*
+#### dynamic *column*
 ```tsql
 DECLARE @TableName NVARCHAR(50)
 DECLARE @SQL NVARCHAR(Max)
@@ -36,4 +36,13 @@ b.ItemCode,b.Dscription
 from '+@TableName+' a 
 left join '+right(@TableName,3)+'1 b'+' on a.docentry=b.docentry';
 exec sp_executesql @sql
+```
+> for string in script
+```sql
+declare @sql nvarchar(max);
+declare @para nvarchar(250);
+
+set @sql = 'select * from ocrd where cardcode = @level ';
+set @para = '@level VARCHAR(30)';
+exec sp_executesql @sql,@para,@level = 'OCID-00001'
 ```
