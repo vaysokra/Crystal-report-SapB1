@@ -50,3 +50,16 @@ case '11' :  result := totext({Command.DocDate},"dd") + ' . វិច្ឆិ�
 case '12' :  result := totext({Command.DocDate},"dd") + ' . ធ្នូ . ' +totext({Command.DocDate},"yy")
 default: result := '_ . _ . _' 
 ```
+#### TransType
+```go
+select {Command.TransType} 
+case '13' : 'AR invoice'  
+case '14' : 'AR credit memo'
+case '18' : 'AP invoice'
+case '19' : 'AP credit memo'
+case '24' : 'Incoming payment'
+case '25' : 'Deposit'
+case '30' : 'Journal Entry'
+case '46' : 'Outgoing payment'
+default: ''
+```
