@@ -1,3 +1,11 @@
+##### LineNum
+```go
+WhilePrintingRecords;
+Global NumberVar i;
+if({Command.Quantity}<0)
+then( i:=i; i)
+else(i:=i+1; i)
+```
 ##### Image path on (OLE Object)
 ```go
 IF ISNULL({OITM.PicturName}) THEN '' ELSE {@PicturePath} + {OITM.PicturName}
