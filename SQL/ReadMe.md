@@ -7,7 +7,7 @@
 ---
 where a.TransId = {?key@}
 ```
-#### 
+#### Partition by
 ```sql
 select CardCode,DocDate,SlpCode,
 sum(doctotal) over (partition by docdate) as total
