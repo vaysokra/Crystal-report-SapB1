@@ -8,6 +8,9 @@ else(i:=i+1; i)
 ```
 ##### Image path on (OLE Object)
 ```go
+// uncheck : can grow
+// OLE Object type : choose paintbrush
+
 //{@PicturePath} := {Command.OADP_BitmapPath}
 IF ISNULL({OITM.PicturName}) THEN '' ELSE {@PicturePath} + {OITM.PicturName}
 ```
