@@ -9,12 +9,12 @@ y.OUDP_Name,y.Remarks,
 y.OACT_AcctName,
 y.OCRD_CardName,
 
-ya.DocDate ORCT_IncomingPymt_DocDate,ya.CardName,
-yb.DocDate OVPM_OutgoingPymt_DocDate,yb.CardName,
-yc.DocDate OPDN_GoodReciptPO_DocDate,yc.CardName,
-yd.DocDate ORDN_Return_DocDate,yd.CardName,
-ye.DocDate OINV_ARinvoice_DocDate,ye.CardName,
-yf.DocDate OPCH_APinvoice_DocDate,yf.CardName
+ya.DocDate ORCT_IncomingPymt_DocDate,ya.CardName,ya.DocNum,
+yb.DocDate OVPM_OutgoingPymt_DocDate,yb.CardName,yb.DocNum,
+yc.DocDate OPDN_GoodReciptPO_DocDate,yc.CardName,yc.DocNum,
+yd.DocDate ORDN_Return_DocDate,yd.CardName,yd.DocNum,
+ye.DocDate OINV_ARinvoice_DocDate,ye.CardName,ye.DocNum,
+yf.DocDate OPCH_APinvoice_DocDate,yf.CardName,yf.DocNum
 
 from (
 select 
@@ -44,4 +44,5 @@ left join OPDN yc on y.OPDN = yc.DocNum
 left join ORDN yd on y.ORDN = yd.DocNum
 left join OINV ye on y.OINV = ye.DocNum
 left join OPCH yf on y.OPCH = yf.DocNum
+
 ```
