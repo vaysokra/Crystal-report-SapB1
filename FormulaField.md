@@ -8,6 +8,7 @@ else(i:=i+1; i)
 ```
 ##### Image path on (OLE Object)
 ```go
+//{@PicturePath} := {Command.OADP_BitmapPath}
 IF ISNULL({OITM.PicturName}) THEN '' ELSE {@PicturePath} + {OITM.PicturName}
 ```
 ##### DocNum
