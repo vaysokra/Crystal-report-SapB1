@@ -1,4 +1,4 @@
-#### all transaction journal
+#### all transaction journal (pivot)
 ```sql
 select 
 y.OJDT_TransId,y.Memo,y.Number,y.RefDate,
