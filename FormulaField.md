@@ -1,3 +1,14 @@
+##### Open balance
+```go
+whileprintingrecords;
+shared currencyvar OB;
+if(date({Command.RefDate}) < {?From})then 
+(OB:=OB;
+OB)
+else
+(OB := OB - {Command.Credit}+{Command.Debit};
+OB)
+```
 ##### LineNum
 ```go
 WhilePrintingRecords;
