@@ -1,4 +1,5 @@
 ## Crystal-report-SapB1
+- grid size (default): 0.212 , grid size : 0.08 
 #### Relationship database B1 
 [(https://biuan.com/?q=OINV)](https://biuan.com/?q=OINV)
 > avoid duplicate
