@@ -1,4 +1,12 @@
-##### Open balance
+##### 10AmountToWord
+```go
+numberVar x :={Command.DocTotal}- Int ({Command.DocTotal}) ;
+if  x = 0 then
+     ProperCase (ToWords (Int ({Command.DocTotal}),0) )+ ' US Dollars'
+else
+     ProperCase(ToWords (Int ({Command.DocTotal}),0)) + 'US Dollars, and ' + ProperCase(ToWords ((x * 100),0)) + ' cents'
+```
+##### 9Open balance
 ```go
 whileprintingrecords;
 shared currencyvar OB;
@@ -9,7 +17,7 @@ else
 (OB := OB - {Command.Credit}+{Command.Debit};
 OB)
 ```
-##### LineNum
+##### 8LineNum
 ```go
 WhilePrintingRecords;
 Global NumberVar i;
@@ -17,7 +25,7 @@ if({Command.Quantity}<0)
 then( i:=i; i)
 else(i:=i+1; i)
 ```
-##### Image path on (OLE Object)
+##### 7Image path on (OLE Object)
 ```go
 // uncheck : can grow
 // OLE Object type : choose paintbrush
@@ -25,18 +33,18 @@ else(i:=i+1; i)
 //{@PicturePath} := {Command.OADP_BitmapPath}
 IF ISNULL({OITM.PicturName}) THEN '' ELSE {@PicturePath} + {OITM.PicturName}
 ```
-##### DocNum
+##### 6DocNum
 ```go
 stringvar x;
 x:=Totext ({Command.ORDR_DocNum},0,"");
 {Command.NNM1_BeginStr}+""+left(x,4)+"-"+mid(x,5,8)
 ```
-##### checkMark
+##### 5checkMark
 ```go
 if {Command.DocCurr}='USD' then chr(254)
 else chr(111)
 ```
-#### Date Interval
+#### 4Date Interval
 > 4/1/2015 to 4/1/2014
 ```go
 DateAdd("yyyy", -1, {Command.RefDate})
@@ -45,7 +53,7 @@ DateAdd("yyyy", -1, {Command.RefDate})
 ```go
 DateAdd("d", -30, Date(2015, 04, 01))
 ```
-##### DocDate(01/05/2021)
+##### 3DocDate(01/05/2021)
 ```go
 totext({Command.DocDate},'dd/MM/yyyy')
 ```
@@ -53,7 +61,7 @@ totext({Command.DocDate},'dd/MM/yyyy')
 ```go
 totext({Command.DocDate},'dd/MMM/yyyy')
 ```
-#### DocDate(KH)
+#### 2DocDate(KH)
 ```go
 stringvar x ;
 stringvar result;
@@ -73,7 +81,7 @@ case '11' :  result := totext({Command.DocDate},"dd") + ' . វិច្ឆិ�
 case '12' :  result := totext({Command.DocDate},"dd") + ' . ធ្នូ . ' +totext({Command.DocDate},"yy")
 default: result := '_ . _ . _' 
 ```
-#### TransType
+#### 1TransType
 ```go
 select {Command.TransType} 
 case '13' : 'AR invoice'  
