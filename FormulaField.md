@@ -1,3 +1,5 @@
+#### Title
+- 
 ##### 11Format currency to sting
 ```go
 IIF(CStr ({OCRD.CreditLine})<>CStr (0),CStr ({OCRD.CreditLine},0),'Negotiation')
