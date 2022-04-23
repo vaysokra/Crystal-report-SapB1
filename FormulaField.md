@@ -1,5 +1,15 @@
 #### Title
-- 
+- 1TransType
+- 2DocDate(KH)
+- 3DocDate(01/05/2021)
+- 4Date Interval
+- 5checkMark
+- 6DocNum
+- 7Image path on (OLE Object)
+- 8LineNum
+- 9Open balance
+- 10AmountToWord
+- 11Format currency to sting
 ##### 11Format currency to sting
 ```go
 IIF(CStr ({OCRD.CreditLine})<>CStr (0),CStr ({OCRD.CreditLine},0),'Negotiation')
