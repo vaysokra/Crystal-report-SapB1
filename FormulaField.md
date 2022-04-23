@@ -1,3 +1,7 @@
+##### 11Format currency to sting
+```go
+IIF(CStr ({OCRD.CreditLine})<>CStr (0),CStr ({OCRD.CreditLine},0),'Negotiation')
+```
 ##### 10AmountToWord
 ```go
 numberVar x :={Command.DocTotal}- Int ({Command.DocTotal}) ;
