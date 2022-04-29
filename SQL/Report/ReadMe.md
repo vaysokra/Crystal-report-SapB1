@@ -3,15 +3,16 @@
 - 1all transaction journal( pivot)
 #### 2Journal To baseDocument Detail
 ```sql
+--z11 ovpm (outGoingPmyt) z22 opch(apInvoice) z33 oinv(arInvoice) z44 orct(inComingpmyt)
 select 
 y.TransId,y.Debit,y.Credit,y.ShortName,y.RefDate,y.Line_ID,
 y.OVPM,y.OPCH,y.ORCT,y.OINV,
 a.AcctName OACT_AcctName,
 
-z11.DocNum OVPM_outGoing_DocNum,z11.OcrCode,
-z22.DocNum OPCH_ApInv_DocNum,z22.OcrCode,
-z33.DocNum OINV_ArInv_DocNum,z33.OcrCode,
-z44.DocNum ORCT_inComing_DocNum,z44.OcrCode
+z11.DocNum OVPM_outGoing_DocNum,z11.OcrCode,z11.CardName,z11.BeginStr,z11.DocDate,z11.JrnlMemo,
+z22.DocNum OPCH_ApInv_DocNum,z22.OcrCode,z22.Dscription,z22.CardName,z22.BeginStr,z22.DocDate,
+z33.DocNum OINV_ArInv_DocNum,z33.OcrCode,z33.Dscription,z33.CardName,z33.BeginStr,z33.DocDate,
+z44.DocNum ORCT_inComing_DocNum,z44.OcrCode,z44.CardName,z44.BeginStr,z44.DocDate,z44.JrnlMemo
 from(
 select 
 a1.TransId,
@@ -27,20 +28,40 @@ max(x.baseref) FOR x.TableName IN ([OVPM],[OPCH],[OINV],[ORCT],[OJDT])
 ) y
 
 left join OACT a on y.ShortName = a.AcctCode
---outgoing
-left join (select a.DocNum,a2.OcrCode from VPM2 a2 
-left join OVPM a on a2.DocNum = a.DocEntry) z11 on y.OVPM = z11.DocNum
---ap invoice
-left join (select a.DocNum,a1.OcrCode,a1.AcctCode from PCH1 a1 
-left join OPCH a on a1.DocEntry = a.DocEntry) z22 on y.opch = z22.DocNum and z22.AcctCode = y.ShortName
---ar invoice
-left join (select a.DocNum,a1.OcrCode,a1.AcctCode from INV1 a1 
-left join OINV a on a1.DocEntry = a.DocEntry) z33 on y.oinv = z33.DocNum and z33.AcctCode = y.ShortName
---incoming
-left join (select a.DocNum,a2.OcrCode from RCT2 a2 
-left join ORCT a on a2.DocNum = a.DocEntry) z44 on y.orct = z44.DocNum
 
-where y.TransId = 4532
+--outgoing
+left join (select 
+a.CardName,a.DocNum,a.DocDate,a.JrnlMemo,
+a2.OcrCode,
+b1.BeginStr from VPM2 a2 
+left join OVPM a on a2.DocNum = a.DocEntry
+left join NNM1 b1 on a.Series = b1.Series) z11 on y.OVPM = z11.DocNum
+
+--ap invoice
+left join (select 
+a.CardName,a.DocNum,a1.OcrCode,a.DocDate,
+a1.AcctCode,a1.Dscription,
+b1.BeginStr from PCH1 a1 
+left join OPCH a on a1.DocEntry = a.DocEntry
+left join NNM1 b1 on a.Series = b1.Series) z22 on y.opch = z22.DocNum and z22.AcctCode = y.ShortName
+
+--ar invoice
+left join (select 
+a.CardName,a.DocNum,a.DocDate,
+a1.OcrCode,a1.AcctCode,a1.Dscription,
+b1.BeginStr from INV1 a1 
+left join OINV a on a1.DocEntry = a.DocEntry
+left join NNM1 b1 on a.Series = b1.Series) z33 on y.oinv = z33.DocNum and z33.AcctCode = y.ShortName
+
+--incoming
+left join (select 
+a.CardName,a.DocNum,a.DocDate,a.JrnlMemo,
+a2.OcrCode,
+b1.BeginStr from RCT2 a2 
+left join ORCT a on a2.DocNum = a.DocEntry
+left join NNM1 b1 on a.Series = b1.Series) z44 on y.orct = z44.DocNum
+
+where y.TransId = 4530
 ```
 #### 1all transaction journal (pivot)
 ```sql
