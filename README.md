@@ -4,7 +4,7 @@
 - 3parameter field
 - 4Relationship database B1(website)
 - 5keybord shortcut
-- 6master_detail and detail_master
+- 6master_detail and detail_master (table relationship)
 ### Crystal-report-SapB1
 - grid size (default): 0.212 , grid size : 0.08 
 #### 6master_detail and detail_master
