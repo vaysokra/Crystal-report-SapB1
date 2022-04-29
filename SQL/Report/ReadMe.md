@@ -1,4 +1,48 @@
-#### all transaction journal (pivot)
+## Title
+- 2Journal To baseDocument Detail
+- 1all transaction journal( pivot)
+#### 2Journal To baseDocument Detail
+```sql
+select 
+y.TransId,y.Debit,y.Credit,y.ShortName,y.RefDate,y.Line_ID,
+y.OVPM,y.OPCH,y.ORCT,y.OINV,
+a.AcctName OACT_AcctName,
+
+z11.DocNum OVPM_outGoing_DocNum,z11.OcrCode,
+z22.DocNum OPCH_ApInv_DocNum,z22.OcrCode,
+z33.DocNum OINV_ArInv_DocNum,z33.OcrCode,
+z44.DocNum ORCT_inComing_DocNum,z44.OcrCode
+from(
+select 
+a1.TransId,
+a1.ShortName,a1.baseRef,a1.credit,a1.debit,a1.RefDate,a1.Line_ID,
+b.TableName
+from JDT1 a1
+--left join JDT1 a1 on a.TransId = a1.TransId
+left join OBOB b on a1.TransType = b.ObjectId
+) x
+pivot (
+--ovpm (outGoingPmyt) opch(apInvoice) oinv(arInvoice) orct(inComingpmyt)
+max(x.baseref) FOR x.TableName IN ([OVPM],[OPCH],[OINV],[ORCT],[OJDT])
+) y
+
+left join OACT a on y.ShortName = a.AcctCode
+--outgoing
+left join (select a.DocNum,a2.OcrCode from VPM2 a2 
+left join OVPM a on a2.DocNum = a.DocEntry) z11 on y.OVPM = z11.DocNum
+--ap invoice
+left join (select a.DocNum,a1.OcrCode,a1.AcctCode from PCH1 a1 
+left join OPCH a on a1.DocEntry = a.DocEntry) z22 on y.opch = z22.DocNum and z22.AcctCode = y.ShortName
+--ar invoice
+left join (select a.DocNum,a1.OcrCode,a1.AcctCode from INV1 a1 
+left join OINV a on a1.DocEntry = a.DocEntry) z33 on y.oinv = z33.DocNum and z33.AcctCode = y.ShortName
+--incoming
+left join (select a.DocNum,a2.OcrCode from RCT2 a2 
+left join ORCT a on a2.DocNum = a.DocEntry) z44 on y.orct = z44.DocNum
+
+where y.TransId = 4532
+```
+#### 1all transaction journal (pivot)
 ```sql
 select 
 y.OJDT_TransId,y.Memo,y.Number,y.RefDate,
