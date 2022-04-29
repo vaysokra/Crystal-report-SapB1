@@ -1,6 +1,16 @@
-## Crystal-report-SapB1
+## Title
+- 1unlock user password
+- 2change password
+- 3parameter field
+- 4Relationship database B1(website)
+- 5keybord shortcut
+### Crystal-report-SapB1
 - grid size (default): 0.212 , grid size : 0.08 
-#### Relationship database B1 
+#### 5keybord shortcut
+- ctrl + 2(left-click) = change name of label
+- cursor on any field => shift + alt + F2 = user defined value
+
+#### 4Relationship database B1 (website) 
 [(https://biuan.com/?q=OINV)](https://biuan.com/?q=OINV)
 > avoid duplicate
 ```sql
@@ -9,7 +19,7 @@ DLN1 a1 left join RDR1 b1 on a1.BaseEntry = b1.DocEntry and a1.BaseLine = b1.Lin
 -- Delivery to AR/Invoice
 DLN1 a1 left join INV1 b1 on a1.DocEntry = b1.BaseEntry and a1.LineNum = b1.BaseLine
 ```
-#### Parameter field
+#### 3Parameter field
 - range value ,there are two value : minimum() and maximum()
 - HasValue() , not HasValue() : for check null value (optional prompt in parameter field)
 - **Vendor@Select * from OCRD Where CardType='C'** for link to list all of vendor and **DocEntry@** for reference to docentry in any document 
@@ -17,14 +27,14 @@ DLN1 a1 left join INV1 b1 on a1.DocEntry = b1.BaseEntry and a1.LineNum = b1.Base
 ```go
 (not HasValue({?Cardcode@select * from ocrd}) OR {Command.CardCode} = {?Cardcode@select * from ocrd})
 ```
-#### change password
+#### 2change password
 ```
 DELETE FROM OUSR WHERE USERID = 1
 
 INSERT INTO [TARGET].[dbo].OUSR
 SELECT * FROM [SOURCE].[dbo].[OUSR] WHERE USERID = 1
 ```
-##### unlock user password
+##### 1unlock user password
 ```
 update OUSR set Locked = 'N' where USERID = 1
 ```
