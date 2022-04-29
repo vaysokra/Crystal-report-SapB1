@@ -4,8 +4,20 @@
 - 3parameter field
 - 4Relationship database B1(website)
 - 5keybord shortcut
+- 6master_detail and detail_master
 ### Crystal-report-SapB1
 - grid size (default): 0.212 , grid size : 0.08 
+#### 6master_detail and detail_master
+```sql
+-- detail relate master
+select a.DocNum,a1.dscription,a1.docEntry from PCH1 a1
+left join OPCH a on a1.DocEntry = a.DocEntry
+where a1.DocEntry = 2
+-- master relate detail
+select a.DocNum,a1.dscription,a1.docEntry from OPCH a
+left join PCH1 a1 on a.DocEntry = a1.DocEntry
+where a.DocEntry = 2
+```
 #### 5keybord shortcut
 - ctrl + 2(left-click) = change name of label
 - cursor on any field => shift + alt + F2 = user defined value
