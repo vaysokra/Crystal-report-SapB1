@@ -5,8 +5,15 @@
 - 4Relationship database B1(website)
 - 5keybord shortcut
 - 6master_detail and detail_master (table relationship)
+- 7Query Manager parameter
 ### Crystal-report-SapB1
 - grid size (default): 0.212 , grid size : 0.08 
+#### 7Query Manager parameter
+```sql
+DECLARE @schoolYear as VarChar, @studentID as VarChar
+SET @schoolYear = (SELECT a.DocDate FROM ORDR A WHERE A.DocDate = [%0])
+SET @studentID = (SELECT a.CardName FROM ORDR A WHERE A.CardName = [%1])
+```
 #### 6master_detail and detail_master
 ```sql
 -- detail relate master
@@ -42,7 +49,7 @@ DLN1 a1 left join INV1 b1 on a1.DocEntry = b1.BaseEntry and a1.LineNum = b1.Base
 #### 2change password
 ```
 DELETE FROM OUSR WHERE USERID = 1
-
+q
 INSERT INTO [TARGET].[dbo].OUSR
 SELECT * FROM [SOURCE].[dbo].[OUSR] WHERE USERID = 1
 ```
