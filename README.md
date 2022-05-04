@@ -49,7 +49,7 @@ DLN1 a1 left join INV1 b1 on a1.DocEntry = b1.BaseEntry and a1.LineNum = b1.Base
 #### 2change password
 ```
 DELETE FROM OUSR WHERE USERID = 1
-q
+
 INSERT INTO [TARGET].[dbo].OUSR
 SELECT * FROM [SOURCE].[dbo].[OUSR] WHERE USERID = 1
 ```
