@@ -57,6 +57,7 @@ x:=Totext ({Command.ORDR_DocNum},0,"");
 ```
 ##### 5checkMark
 ```go
+//font : Wingdings
 if {Command.DocCurr}='USD' then chr(254)
 else chr(111)
 ```
