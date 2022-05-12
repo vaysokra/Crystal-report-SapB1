@@ -6,8 +6,11 @@
 - 5keybord shortcut
 - 6master_detail and detail_master (table relationship)
 - 7Query Manager parameter
+- 8LineNumber (group)
 ### Crystal-report-SapB1
 - grid size (default): 0.212 , grid size : 0.08 
+#### 8LineNumber (group)
+- make `lineNumber` in formular-field and insert or return `1`, then Running-total-field : add `LineNumber` and `sum`
 #### 7Query Manager parameter
 ```sql
 DECLARE @schoolYear as VarChar, @studentID as VarChar
